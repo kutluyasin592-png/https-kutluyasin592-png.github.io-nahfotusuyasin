@@ -1,1 +1,0 @@
-# https-kutluyasin592-png.github.io-nahfotusuyasin
