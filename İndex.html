@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doğum günün kutlu olsun aşkım</title>
+<style>
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(ellipse at bottom, #000022 0%, #000000 100%);
+  position: relative;
+  height: 100vh;
+  cursor: default;
+}
+
+/* Yıldızlar */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: starMove linear infinite;
+}
+@keyframes starMove {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  100% { transform: translateY(100vh) translateX(50px); opacity: 0; }
+}
+
+/* Yazı animasyonu */
+#typing {
+  width: 90%;
+  max-width: 600px;
+  margin: 80px auto 20px;
+  text-align: center;
+  font-size: 5vw;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 0 10px #ff8ac6;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  animation: typing 4s steps(50) forwards, cursor .7s infinite;
+}
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes cursor { 50% { border-color: transparent; } }
+
+/* Hediye kutusu ve dokun balonu */
+#giftWrapper {
+  text-align: center;
+  margin: 20px auto;
+  position: relative;
+  display: inline-block;
+}
+#giftBox {
+  font-size: 100px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+#touchBubble {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 0;
+  left: 110%;
+  transform: translateY(-20%);
+}
+
+/* Sallanma animasyonu */
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+.shake {
+  animation: shake 0.5s;
+}
+
+/* Bölüm */
+.section {
+  text-align: center;
+  color: white;
+  font-size: 4vw;
+  margin: 10px auto;
+  max-width: 700px;
+  text-shadow: 0 0 8px #ff8ac6;
+}
+
+/* Video */
+.videoContainer {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  margin: 30px auto;
+  aspect-ratio: 9/16; /* Dikey video */
+  cursor: pointer;
+}
+.videoContainer iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Modal */
+#videoModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#videoModal iframe {
+  height: 90vh; 
+  width: auto;
+  max-width: 95vw;
+  border-radius: 12px;
+}
+
+/* Kalpler ekrana dokununca */
+.heart {
+  position: absolute;
+  font-size: 25px;
+  animation: fly 1s linear forwards;
+}
+@keyframes fly {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+}
+
+/* Balonlar */
+.balloon {
+  position: absolute;
+  font-size: 50px;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(100vh) }
+  100% { transform: translateY(-150vh) }
+}
+
+/* Sparkle */
+.sparkle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkleMove 3s linear infinite;
+  opacity: 0.7;
+}
+@keyframes sparkleMove {
+  0% { transform: translate(0,0); opacity: .2; }
+  50% { opacity: 1; }
+  100% { transform: translate(30px, 80px); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hediye kutusu ve dokun baloncuk -->
+<div id="giftWrapper">
+  <div id="giftBox">🎁</div>
+  <div id="touchBubble">Dokun</div>
+</div>
+
+<!-- Yazılar -->
+<div id="typing">Doğum günün kutlu olsun aşkım 💗</div>
+<div class="section">Seni tanıdığım için çok şanslıyım…</div>
+<div class="section">Varlığın her günüme güzellik katıyor…</div>
+<div class="section">İyi ki doğdun, iyi ki benim oldun… 💕</div>
+
+<!-- Videolar (2 tane alt alta) -->
+<div class="videoContainer" data-src="https://drive.google.com/file/d/1Nv-hQ4C_vjBSvmeQGImJ39_yRPXHGYLz/preview">
+  <iframe src="https://drive.google.com/file/d/1Nv-hQ4C_vjBSvmeQGImJ39_yRPXHGYLz/preview"></iframe>
+</div>
+<div class="videoContainer" data-src="https://drive.google.com/file/d/1wMqXO6dtNnAZFPEsZsFavmc9Qx0gh-i5/preview">
+  <iframe src="https://drive.google.com/file/d/1wMqXO6dtNnAZFPEsZsFavmc9Qx0gh-i5/preview"></iframe>
+</div>
+
+<!-- Romantik paragraf -->
+<div class="section">
+Her anımızı seninle paylaşmak, hayatımın en değerli hediyesi gibi. 💖<br>
+Seninle gülmek, seninle hayaller kurmak ve senin yanında uyanmak…<br>
+Her gün, senin varlığınla daha anlamlı ve güzel oluyor.<br>
+Seni tanıdığım için kendimi çok şanslı hissediyorum; kalbimin her atışı senin için atıyor.<br>
+İyi ki doğdun aşkım, iyi ki benim oldun…<br>
+Hayatımın her saniyesinde seninle olmak, elini tutmak ve gözlerine bakmak istiyorum.<br>
+Sonsuza kadar seninle olmayı, her anımızı birlikte yaşamayı diliyorum. 💕
+</div>
+
+<!-- Modal -->
+<div id="videoModal" onclick="closeModal()">
+  <iframe src="" allowfullscreen></iframe>
+</div>
+
+<script>
+// Müzik autoplay
+const music = new Audio("https://p.scdn.co/mp3-preview/3afc27153ddd1ccb3b627c3c3f5f33b7b47a1bb2?cid=YOURID");
+music.volume = 0.7;
+music.play().catch(()=>{});
+
+// Hediye kutusu tıklama 14. dokunuşta (doğal kalp fırlatma + sallanma)
+let clickCount = 0;
+const neededClicks = 14;
+const giftBox = document.getElementById('giftBox');
+
+giftBox.addEventListener('click', function(){
+  clickCount++;
+  if(clickCount < neededClicks) {
+    // Sallanma efekti
+    giftBox.classList.add('shake');
+    setTimeout(()=> giftBox.classList.remove('shake'), 500);
+    return;
+  }
+
+  // 14. tıklamada kutu patlama ve kalpler
+  this.style.transform = "translateY(-100px) rotate(720deg)";
+  setTimeout(()=> this.remove(), 500);
+
+  for(let i=0;i<100;i++){
+    let h = document.createElement('div');
+    h.className = 'heart';
+    h.innerHTML = '💖';
+    h.style.left = (window.innerWidth/2 + (Math.random()-0.5)*400) + 'px';
+    h.style.top = '200px';
+    h.style.transform = `rotate(${Math.random()*360}deg) scale(${0.5+Math.random()})`;
+    document.body.appendChild(h);
+
+    let startX = parseInt(h.style.left);
+    let startY = 200;
+    let dx = (Math.random()-0.5)*400;
+    let dy = -200 - Math.random()*200;
+    let gravity = 0.5 + Math.random()*0.3;
+    let rotationSpeed = (Math.random()-0.5)*10;
+    let scaleSpeed = 0.01 + Math.random()*0.02;
+    let progress = 0;
+
+    function animate(){
+      progress += 0.02;
+      if(progress>1){ h.remove(); return; }
+      let x = startX + dx*progress;
+      let y = startY + dy*progress + gravity*progress*progress*100;
+      h.style.left = x + "px";
+      h.style.top = y + "px";
+      h.style.transform = `rotate(${rotationSpeed*progress*360}deg) scale(${0.5+progress*0.5})`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+});
+
+// Balonlar sürekli oluştur
+function createBalloons(){
+  for(let i=0;i<5;i++){
+    let b1 = document.createElement('div');
+    b1.className = 'balloon';
+    b1.style.left = (i*80)+'px';
+    b1.innerHTML = '🎈';
+    b1.style.animationDuration = (10+Math.random()*5)+'s';
+    document.body.appendChild(b1);
+
+    let b2 = document.createElement('div');
+    b2.className = 'balloon';
+    b2.style.right = (i*80)+'px';
+    b2.innerHTML = '🎈';
+    b2.style.animationDuration = (10+Math.random()*5)+'s';
+    document.body.appendChild(b2);
+  }
+}
+createBalloons();
+
+// Yıldızlar
+for(let i=0;i<100;i++){
+  let s = document.createElement('div');
+  s.className = 'star';
+  s.style.left = Math.random()*window.innerWidth + 'px';
+  s.style.top = Math.random()*window.innerHeight + 'px';
+  s.style.width = Math.random()*2 + 'px';
+  s.style.height = Math.random()*2 + 'px';
+  s.style.animationDuration = (5+Math.random()*5)+'s';
+  document.body.appendChild(s);
+}
+
+// Sparkle efektleri
+setInterval(() => {
+  let sp = document.createElement("div");
+  sp.className = "sparkle";
+  sp.style.left = Math.random()*100+"vw";
+  sp.style.top = Math.random()*100+"vh";
+  document.body.appendChild(sp);
+  setTimeout(()=> sp.remove(),3000);
+},150);
+
+// Ekrana dokununca kalp
+document.addEventListener("click", (e)=>{
+  let h = document.createElement('div');
+  h.className = 'heart';
+  h.innerHTML = '💖';
+  h.style.left = e.clientX + 'px';
+  h.style.top = e.clientY + 'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1000);
+});
+
+// Video modal açma
+const modal = document.getElementById('videoModal');
+const modalIframe = modal.querySelector('iframe');
+document.querySelectorAll('.videoContainer').forEach(vc=>{
+  vc.addEventListener('click', ()=>{
+    modal.style.display = 'flex';
+    modalIframe.src = vc.dataset.src;
+  });
+});
+function closeModal(){
+  modal.style.display = 'none';
+  modalIframe.src = '';
+}
+</script>
+</body>
+</html>
